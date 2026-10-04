@@ -1,0 +1,51 @@
+51 ?- house = house.
+true.      
+Both constant are identical, so it unifies with itself which results in true.
+
+
+52 ?- house = abc.
+false.
+Different constants can't be unified to each other, so it'll results in false.
+
+
+53 ?- edge(a,b) = edge(C,b).
+C = a.
+Same functor, and same number of arguments, they match so the variable C = a, and the atom in second argument is identical.
+
+
+54 ?- edge(a,d) = edge(C,B).
+C = a,
+B = d.
+Same functor, same number of arguments, so variables = the atoms as C = a, and B = d.
+
+
+55 ?- edge(C,B) = edge(a,d).
+C = a,
+B = d.
+Same as the previous one, just the arguments are in revered order.
+
+
+56 ?-  edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g, h).
+Any variable will unify with any type of term, A is instantiated to the atom a, and B is instantiated to the structure f(g, h).
+
+
+57 ?- edge(A,A) = edge(b,c).
+false.
+Variable A is in both positions so it must unify with both constants b and c, but since they're different constant the unification fails.
+
+
+58 ?- edge(A,A) = edge(b,b).
+A = b.
+Variable A is in both positions, since b and b are identical atoms, A is instantiated with b.
+
+
+59 ?- A = B, B = f.
+A = B, B = f.
+First A is instantiated to B since they're both variables, then B is instantiated to the atom f, then A will also take the atom f.
+
+
+60 ?- A = B, B = f, A = e.
+false.
+First variable A is unified with variable B, then B is instantiated to the atom f, then var A now is = f, but then tried to unify var A with atom e, and since atoms f and e are different it'll fail.
